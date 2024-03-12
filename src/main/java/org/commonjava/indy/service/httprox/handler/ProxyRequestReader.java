@@ -119,8 +119,24 @@ public final class ProxyRequestReader
                 sourceChannel.resumeReads();
             }
         } catch (final IOException e) {
-            writer.setError(e);
-            sendResponse = true;
+            if ( e.getMessage().contains("Connection reset by peer") )
+            {
+                logger.warn("Client closed connection. Aborting proxy request.");
+                sendResponse = false;
+                try
+                {
+                    sourceChannel.shutdownReads();
+                }
+                catch (IOException ex)
+                {
+                    logger.warn("Shutdown channel exception.", ex);
+                }
+            }
+            else
+            {
+                writer.setError(e);
+                sendResponse = true;
+            }
         }
 
         if (sendResponse) {
