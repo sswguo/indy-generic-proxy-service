@@ -20,7 +20,7 @@ RUN mkdir -p /deployment/log /deployment/config && \
 COPY --from=builder /workspace/indy-generic-proxy-service/target/*-runner.jar /deployment/indy-generic-proxy-service-runner.jar
 RUN chmod +r /deployment/indy-generic-proxy-service-runner.jar
 
-COPY start-service.sh /deployment/start-service.sh
+COPY images/start-service.sh /deployment/start-service.sh
 RUN chmod +x /deployment/*
 
 USER 1001
