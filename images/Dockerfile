@@ -1,14 +1,11 @@
 FROM quay.io/factory2/spmm-pipeline-base:latest AS builder
 
-ARG GIT_URL
-ARG GIT_REVISION
+ARG GIT_REVISION=main
 
 RUN mkdir workspace && \
     cd workspace && \
     git init && \
-    git remote add origin $GIT_URL && \
-    git fetch --depth 1 origin $GIT_REVISION && \
-    git checkout FETCH_HEAD
+    git clone -b ${GIT_REVISION} --depth 1 https://github.com/Commonjava/indy-generic-proxy-service.git
 
 RUN cd repo && \
     mvn package -Dquarkus.package.type=uber-jar
