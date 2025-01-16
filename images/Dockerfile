@@ -17,7 +17,7 @@ USER root
 RUN mkdir -p /deployment/log /deployment/config && \
   chmod -R 777 /deployment/log /deployment/config
 
-COPY --from=builder /workspace/target/*-runner.jar /deployment/indy-generic-proxy-service-runner.jar
+COPY --from=builder /workspace/indy-generic-proxy-service/target/*-runner.jar /deployment/indy-generic-proxy-service-runner.jar
 RUN chmod +r /deployment/indy-generic-proxy-service-runner.jar
 
 ADD /images/start-service.sh /deployment/start-service.sh
