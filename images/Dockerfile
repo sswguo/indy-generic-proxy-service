@@ -11,7 +11,7 @@ WORKDIR /workspace
 RUN git init && \
     git clone -b ${GIT_REVISION} --depth 1 https://github.com/Commonjava/indy-generic-proxy-service.git
 
-RUN cd workspace/indy-generic-proxy-service && \
+RUN cd indy-generic-proxy-service && \
     mvn package -Dquarkus.package.type=uber-jar
 
 FROM registry.access.redhat.com/ubi9/openjdk-11-runtime:1.21-1
