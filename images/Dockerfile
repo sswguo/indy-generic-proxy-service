@@ -2,6 +2,9 @@ FROM registry.access.redhat.com/ubi9/openjdk-11-runtime:1.21-1 AS builder
 
 ARG GIT_REVISION=main
 
+USER root
+
+RUN microdnf install -y git-core && microdnf clean all
 RUN mkdir workspace && \
     cd workspace && \
     git init && \
