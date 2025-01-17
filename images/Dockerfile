@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/openjdk-11-runtime:1.21-1 AS builder
+FROM registry.access.redhat.com/ubi9/openjdk-11:1.21-1 AS builder
 
 ARG GIT_REVISION=main
 
