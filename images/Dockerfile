@@ -6,7 +6,6 @@ USER root
 
 RUN microdnf install -y git-core && microdnf clean all
 
-USER 185
 WORKDIR /
 
 RUN mkdir workspace && \
