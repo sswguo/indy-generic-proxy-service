@@ -6,11 +6,9 @@ USER root
 
 RUN microdnf install -y git-core && microdnf clean all
 
-WORKDIR /
+WORKDIR /workspace
 
-RUN mkdir workspace && \
-    cd workspace && \
-    git init && \
+RUN git init && \
     git clone -b ${GIT_REVISION} --depth 1 https://github.com/Commonjava/indy-generic-proxy-service.git
 
 RUN cd workspace/indy-generic-proxy-service && \
