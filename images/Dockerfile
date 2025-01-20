@@ -14,7 +14,7 @@ RUN git init && \
 RUN cd indy-generic-proxy-service && \
     mvn package -Dquarkus.package.type=uber-jar
 
-FROM registry.access.redhat.com/ubi9/openjdk-11-runtime:1.21-1
+FROM registry.access.redhat.com/ubi9/openjdk-11-runtime:1.21-1.1733995523
 
 USER root
 
