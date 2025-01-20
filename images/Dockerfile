@@ -27,8 +27,6 @@ RUN chmod +r /deployment/indy-generic-proxy-service-runner.jar
 COPY images/start-service.sh /deployment/start-service.sh
 RUN chmod +x /deployment/*
 
-USER 1001
-
 WORKDIR /
 
 ENTRYPOINT ["bash", "-c"]
