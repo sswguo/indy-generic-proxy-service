@@ -319,6 +319,25 @@ spec:
         name: shared
       - mountPath: /var/workdir
         name: workdir
+  sidecars:
+    - name: indy-sidecar
+      image: quay.io/factory2/indy-sidecar:1.0.4
+      #volumeMounts:
+      #  - name: indy-sidecar-secrets
+      #    readOnly: true
+      #    mountPath: /mnt/secrets-sidecar
+      #  - name: indy-sidecar-config
+      #   readOnly: true
+      #    mountPath: /deployment/config
+      computeResources:
+        limits:
+          cpu: 1
+          memory: 1Gi
+        requests:
+          cpu: 200m
+          memory: 512Mi
+      script: |
+        echo ">> Indy Sidecar <<"
   steps:
     - name: use-trusted-artifact
       image: quay.io/konflux-ci/build-trusted-artifacts:latest@sha256:8feb051d6a0da88a5e3e2dc9358103513f7728d026763276b50c3da4f2c90655
@@ -1169,22 +1188,3 @@ spec:
         requests:
           cpu: 100m
           memory: 256Mi
-  sidecars:
-    - name: indy-sidecar
-      image: quay.io/factory2/indy-sidecar:1.0.4
-      #volumeMounts:
-      #  - name: indy-sidecar-secrets
-      #    readOnly: true
-      #    mountPath: /mnt/secrets-sidecar
-      #  - name: indy-sidecar-config
-      #   readOnly: true
-      #    mountPath: /deployment/config
-      computeResources:
-        limits:
-          cpu: 1
-          memory: 1Gi
-        requests:
-          cpu: 200m
-          memory: 512Mi
-      script: |
-        echo ">> Indy Sidecar <<"
