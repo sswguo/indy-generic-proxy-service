@@ -1189,4 +1189,4 @@ spec:
       script: |
         echo ">> Indy Sidecar <<"
         
-        /deployments/run-java.sh
+        /usr/local/bin/start-service.sh
