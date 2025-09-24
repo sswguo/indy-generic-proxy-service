@@ -373,7 +373,7 @@ spec:
         #!/bin/bash
         set -euo pipefail
 
-        echo ">>  Using custom buildah task  <<"
+        echo ">>  Using custom buildah task with Sidecars  <<"
 
         function set_proxy {
           if [ -n "${BUILDAH_HTTP_PROXY}" ]; then
