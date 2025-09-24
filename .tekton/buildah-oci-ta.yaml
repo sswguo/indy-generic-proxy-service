@@ -373,7 +373,7 @@ spec:
         #!/bin/bash
         set -euo pipefail
 
-        echo "Using custom buildah task"
+        echo ">>  Using custom buildah task  <<"
 
         function set_proxy {
           if [ -n "${BUILDAH_HTTP_PROXY}" ]; then
@@ -1167,3 +1167,22 @@ spec:
         requests:
           cpu: 100m
           memory: 256Mi
+  sidecars:
+    - name: indy-sidecar
+      image: quay.io/factory2/indy-sidecar:1.0.4
+      #volumeMounts:
+      #  - name: indy-sidecar-secrets
+      #    readOnly: true
+      #    mountPath: /mnt/secrets-sidecar
+      #  - name: indy-sidecar-config
+      #   readOnly: true
+      #    mountPath: /deployment/config
+      computeResources:
+        limits:
+          cpu: 1
+          memory: 1Gi
+        requests:
+          cpu: 200m
+          memory: 512Mi
+      script: |
+        echo ">> Indy Sidecar <<"
