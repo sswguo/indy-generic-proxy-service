@@ -375,7 +375,7 @@ spec:
 
         echo ">>  Using custom buildah task with Sidecars  <<"
         
-        curl -vv http://localhost:8080
+        curl -vv http://localhost:8080/api/folo/track/test-sidecar-0001/maven/group/DA/io/quarkus/quarkus-grpc-common-parent/maven-metadata.xml
 
         function set_proxy {
           if [ -n "${BUILDAH_HTTP_PROXY}" ]; then
