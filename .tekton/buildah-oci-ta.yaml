@@ -222,6 +222,12 @@ spec:
       description: Reference of SBOM blob digest to enable digest-based verification
         from provenance
       type: string
+    - name: SBOM_JAVA_COMPONENTS_COUNT
+      description: The counting of Java components by publisher in JSON format
+      type: string
+    - name: JAVA_COMMUNITY_DEPENDENCIES
+      description: The Java dependencies that came from community sources
+        such as Maven central.
   volumes:
     - name: activation-key
       secret:
