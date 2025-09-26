@@ -1172,10 +1172,10 @@ spec:
   sidecars:
     - name: indy-sidecar
       image: quay.io/factory2/indy-sidecar:1.0.4
-      #volumeMounts:
-      #  - name: indy-sidecar-secrets
-      #    readOnly: true
-      #    mountPath: /mnt/secrets-sidecar
+      volumeMounts:
+        - name: indy-sidecar-test-secret
+          readOnly: true
+          mountPath: /opt/indy-sidecar/config
       #  - name: indy-sidecar-config
       #   readOnly: true
       #    mountPath: /deployment/config
