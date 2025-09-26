@@ -255,6 +255,10 @@ spec:
       emptyDir: {}
     - name: workdir
       emptyDir: {}
+    - name: indy-sidecar-secrets
+      secret:
+        optional: true
+        secretName: indy-sidecar-test-secret
   stepTemplate:
     computeResources:
       limits:
@@ -374,6 +378,8 @@ spec:
         set -euo pipefail
 
         echo ">>  Using custom buildah task with Sidecars  <<"
+        
+        curl -vv http://localhost:8080/api/folo/track/test-sidecar-0001/maven/group/DA/io/quarkus/quarkus-grpc-common-parent/maven-metadata.xml
 
         function set_proxy {
           if [ -n "${BUILDAH_HTTP_PROXY}" ]; then
@@ -1170,10 +1176,10 @@ spec:
   sidecars:
     - name: indy-sidecar
       image: quay.io/factory2/indy-sidecar:1.0.4
-      #volumeMounts:
-      #  - name: indy-sidecar-secrets
-      #    readOnly: true
-      #    mountPath: /mnt/secrets-sidecar
+      volumeMounts:
+        - name: indy-sidecar-secrets
+          readOnly: true
+          mountPath: /opt/indy-sidecar/config
       #  - name: indy-sidecar-config
       #   readOnly: true
       #    mountPath: /deployment/config
@@ -1186,3 +1192,7 @@ spec:
           memory: 512Mi
       script: |
         echo ">> Indy Sidecar <<"
+        
+        cat /opt/indy-sidecar/config/proxy.yaml
+        
+        /usr/local/bin/start-service.sh
