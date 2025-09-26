@@ -255,6 +255,10 @@ spec:
       emptyDir: {}
     - name: workdir
       emptyDir: {}
+    - name: indy-sidecar-secrets
+      secret:
+        optional: true
+        secretName: indy-sidecar-test-secret
   stepTemplate:
     computeResources:
       limits:
@@ -1173,7 +1177,7 @@ spec:
     - name: indy-sidecar
       image: quay.io/factory2/indy-sidecar:1.0.4
       volumeMounts:
-        - name: sidecar-proxy.yaml
+        - name: indy-sidecar-secrets
           readOnly: true
           mountPath: /opt/indy-sidecar/config
       #  - name: indy-sidecar-config
