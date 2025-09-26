@@ -1193,7 +1193,6 @@ spec:
       script: |
         echo ">> Indy Sidecar <<"
         
-        cat /opt/indy-sidecar/config/sidecar-proxy.yaml
         cat /opt/indy-sidecar/config/proxy.yaml
         
         /usr/local/bin/start-service.sh
