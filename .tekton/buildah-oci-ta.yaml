@@ -1173,7 +1173,7 @@ spec:
     - name: indy-sidecar
       image: quay.io/factory2/indy-sidecar:1.0.4
       volumeMounts:
-        - name: indy-sidecar-test-secret
+        - name: sidecar-proxy.yaml
           readOnly: true
           mountPath: /opt/indy-sidecar/config
       #  - name: indy-sidecar-config
