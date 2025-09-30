@@ -1175,7 +1175,7 @@ spec:
           memory: 256Mi
   sidecars:
     - name: indy-sidecar
-      image: quay.io/factory2/indy-sidecar:1.0.4
+      image: quay.io/factory2/indy-sidecar:2.0.5
       volumeMounts:
         - name: indy-sidecar-secrets
           readOnly: true
